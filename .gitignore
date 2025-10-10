@@ -1,0 +1,46 @@
+# Binaries
+tubifier
+*.exe
+*.dll
+*.so
+*.dylib
+dist/
+build/
+cmd/
+log/
+pkg/
+migration/
+migrations/
+internal/
+
+
+# Test binary
+*.test
+
+# Output files
+*.txt
+
+# Environment
+.env
+.env.example
+emails.txt
+
+# Config (user-specific)
+config.jsonc
+config.toml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.go
+
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Go workspace file
+go.work
+go.work.sum
