@@ -5,7 +5,7 @@ $ErrorActionPreference = "Stop"
 
 # Configuration
 $Repo = "yq-app/turbifier"
-$BinaryName = "tubifier.exe"
+$BinaryName = "turbifier.exe"
 $InstallDir = "$env:ProgramFiles\Turbifier"
 
 # Colors
@@ -46,7 +46,7 @@ if ($env:PROCESSOR_ARCHITECTURE -eq "ARM64") {
 Write-ColorOutput Cyan "Detected: windows/$Arch"
 
 # Construct download URL
-$BinaryFile = "tubifier-windows-$Arch.exe"
+$BinaryFile = "turbifier-windows-$Arch.exe"
 $DownloadUrl = "https://github.com/$Repo/releases/download/$Version/$BinaryFile"
 $TempFile = "$env:TEMP\$BinaryName"
 
@@ -100,15 +100,15 @@ Write-ColorOutput Cyan "┏━━━━━━━━━━━━━━━━━�
 Write-ColorOutput Cyan "┃   Installation Successful! ✓     ┃"
 Write-ColorOutput Cyan "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 Write-Host ""
-Write-Host "tubifier is now installed at: " -NoNewline
+Write-Host "turbifier is now installed at: " -NoNewline
 Write-ColorOutput Green "$InstallDir\$BinaryName"
 Write-Host ""
 Write-ColorOutput Cyan "Quick Start:"
-Write-Host "  1. " -NoNewline; Write-ColorOutput Green "tubifier init           "; Write-Host "- Create configuration"
-Write-Host "  2. " -NoNewline; Write-ColorOutput Green "tubifier login <token>  "; Write-Host "- Authenticate"
-Write-Host "  3. " -NoNewline; Write-ColorOutput Green "tubifier start          "; Write-Host "- Start verification"
+Write-Host "  1. " -NoNewline; Write-ColorOutput Green "turbifier init           "; Write-Host "- Create configuration"
+Write-Host "  2. " -NoNewline; Write-ColorOutput Green "turbifier login <token>  "; Write-Host "- Authenticate"
+Write-Host "  3. " -NoNewline; Write-ColorOutput Green "turbifier start          "; Write-Host "- Start verification"
 Write-Host ""
-Write-ColorOutput Cyan "Need help? "; Write-Host "Run: " -NoNewline; Write-ColorOutput Green "tubifier --help"
+Write-ColorOutput Cyan "Need help? "; Write-Host "Run: " -NoNewline; Write-ColorOutput Green "turbifier --help"
 Write-Host ""
 Write-ColorOutput Yellow "⚠ Remember to restart your terminal if this is your first installation"
 Write-Host ""

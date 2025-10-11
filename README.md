@@ -24,8 +24,8 @@ Download the binary for your system from [releases](https://github.com/yq-app/tu
 
 **Linux/macOS:**
 ```bash
-chmod +x tubifier-*
-sudo mv tubifier-* /usr/local/bin/tubifier
+chmod +x turbifier-*
+sudo mv turbifier-* /usr/local/bin/turbifier
 ```
 
 **Windows:**
@@ -38,7 +38,7 @@ Move the `.exe` file to a folder in your PATH.
 ### 1. Initialize
 
 ```bash
-tubifier init
+turbifier init
 ```
 
 Creates `config.toml` in your current directory.
@@ -61,7 +61,7 @@ Get API keys from:
 ### 3. Login
 
 ```bash
-tubifier login <your-access-token>
+turbifier login <your-access-token>
 ```
 
 Set up your PIN and security questions when prompted.
@@ -79,7 +79,7 @@ user3@mail.com
 ### 5. Start Verification
 
 ```bash
-tubifier start
+turbifier start
 ```
 
 ---
@@ -120,44 +120,44 @@ stopIfMaximumErrorReached = false   # Stop on max errors (false = pause & retry)
 ### Verification
 
 ```bash
-tubifier start          # Verify all emails
-tubifier start 100      # Verify first 100 emails only
+turbifier start          # Verify all emails
+turbifier start 100      # Verify first 100 emails only
 ```
 
 ### Authentication
 
 ```bash
-tubifier login <token>          # Login and setup
-tubifier logout                 # Logout current device
-tubifier auth pin               # Change PIN
-tubifier auth reset-pin <token> # Reset PIN (requires security questions)
-tubifier auth list              # View all devices
+turbifier login <token>          # Login and setup
+turbifier logout                 # Logout current device
+turbifier auth pin               # Change PIN
+turbifier auth reset-pin <token> # Reset PIN (requires security questions)
+turbifier auth list              # View all devices
 ```
 
 ### Security Questions
 
 ```bash
-tubifier auth security-questions        # View questions
-tubifier auth add-security              # Add question (max 3)
-tubifier auth update-security <number>  # Update question
-tubifier auth remove-security <number>  # Remove question
+turbifier auth security-questions        # View questions
+turbifier auth add-security              # Add question (max 3)
+turbifier auth update-security <number>  # Update question
+turbifier auth remove-security <number>  # Remove question
 ```
 
 ### Configuration
 
 ```bash
-tubifier init                           # Create config file
-tubifier config set --output <path>     # Set output file
-tubifier config set --leads <path>      # Set email list path
-tubifier config enable-api --nextcaptcha <key>  # Set API key
+turbifier init                           # Create config file
+turbifier config set --output <path>     # Set output file
+turbifier config set --leads <path>      # Set email list path
+turbifier config enable-api --nextcaptcha <key>  # Set API key
 ```
 
 ### Duplicates
 
 ```bash
-tubifier count-duplicate        # View stats
-tubifier clear -c               # Clear current project
-tubifier clear -p <name>        # Clear specific project
+turbifier count-duplicate        # View stats
+turbifier clear -c               # Clear current project
+turbifier clear -p <name>        # Clear specific project
 ```
 
 ---
@@ -206,7 +206,7 @@ Total Emails    │ 100   │ Emails loaded
 ### When device limit is reached:
 - Inactive devices (30+ days) are auto-removed
 - 3-day wait required after auto-removal
-- Manual logout: View devices with `tubifier auth list`
+- Manual logout: View devices with `turbifier auth list`
 
 ### Logout Cooldowns:
 - 30+ days usage: 3-day cooldown
@@ -217,7 +217,7 @@ Total Emails    │ 100   │ Emails loaded
 ## Troubleshooting
 
 **"Not authenticated"**
-→ Run `tubifier login <token>`
+→ Run `turbifier login <token>`
 
 **"No captcha solvers configured"**
 → Add API key in `config.toml`
@@ -226,7 +226,7 @@ Total Emails    │ 100   │ Emails loaded
 → Check captcha balance, increase `delayInBetween`, check internet
 
 **"Device limit reached"**
-→ Run `tubifier auth list` and logout from old devices
+→ Run `turbifier auth list` and logout from old devices
 
 **Verification too slow**
 → Reduce `delayInBetween` (min 2 seconds), disable `pausing`
@@ -254,8 +254,8 @@ Total Emails    │ 100   │ Emails loaded
 ## Getting Help
 
 ```bash
-tubifier --help              # General help
-tubifier <command> --help    # Command help
+turbifier --help              # General help
+turbifier <command> --help    # Command help
 ```
 
 ---

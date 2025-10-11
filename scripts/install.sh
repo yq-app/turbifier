@@ -11,7 +11,7 @@ NC='\033[0m' # No Color
 
 REPO="yq-app/turbifier"
 INSTALL_DIR="/usr/local/bin"
-BINARY_NAME="tubifier"
+BINARY_NAME="turbifier"
 
 echo -e "${CYAN}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${NC}"
 echo -e "${CYAN}┃      Turbifier Installer         ┃${NC}"

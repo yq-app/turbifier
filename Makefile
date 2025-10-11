@@ -1,11 +1,11 @@
 # Turbifier Makefile
 
 # Variables
-BINARY_NAME=tubifier
+BINARY_NAME=turbifier
 RELEASE_BINARY=release
 VERSION?=v1.0.0
 BUILD_DIR=dist
-MAIN_PKG=./cmd/tubifier
+MAIN_PKG=./cmd/turbifier
 RELEASE_PKG=./cmd/release
 
 # Go parameters
