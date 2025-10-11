@@ -6,7 +6,7 @@ $ErrorActionPreference = "Stop"
 # Configuration
 $Repo = "yq-app/turbifier"
 $BinaryName = "turbifier.exe"
-$InstallDir = "$env:ProgramFiles\Turbifier"
+$InstallDir = "$env:LOCALAPPDATA\Turbifier"
 
 # Colors
 function Write-ColorOutput($ForegroundColor) {

@@ -54,19 +54,37 @@ echo -e "${YELLOW}→ Downloading ${BINARY}...${NC}"
 
 # Download binary
 if command -v curl &> /dev/null; then
-    curl -fsSL "$URL" -o "/tmp/${BINARY_NAME}" || {
-        echo -e "${RED}✗ Download failed${NC}"
-        echo -e "${RED}  Make sure the release exists: ${URL}${NC}"
+    HTTP_CODE=$(curl -fsSL -w "%{http_code}" "$URL" -o "/tmp/${BINARY_NAME}")
+    if [ "$HTTP_CODE" != "200" ]; then
+        echo -e "${RED}✗ Download failed (HTTP $HTTP_CODE)${NC}"
+        echo -e "${RED}  URL: ${URL}${NC}"
+        echo -e "${RED}  The binary for your platform may not exist in this release${NC}"
         exit 1
-    }
+    fi
 elif command -v wget &> /dev/null; then
-    wget -q "$URL" -O "/tmp/${BINARY_NAME}" || {
+    wget -q --server-response "$URL" -O "/tmp/${BINARY_NAME}" 2>&1 | grep -q "HTTP/.* 200" || {
         echo -e "${RED}✗ Download failed${NC}"
-        echo -e "${RED}  Make sure the release exists: ${URL}${NC}"
+        echo -e "${RED}  URL: ${URL}${NC}"
+        echo -e "${RED}  The binary for your platform may not exist in this release${NC}"
         exit 1
     }
 else
     echo -e "${RED}✗ Neither curl nor wget found${NC}"
+    exit 1
+fi
+
+# Verify download
+if [ ! -s "/tmp/${BINARY_NAME}" ]; then
+    echo -e "${RED}✗ Downloaded file is empty or doesn't exist${NC}"
+    exit 1
+fi
+
+# Check if it's an HTML error page (GitHub returns 404 as HTML)
+if file "/tmp/${BINARY_NAME}" | grep -q "HTML"; then
+    echo -e "${RED}✗ Download failed - binary not found in release${NC}"
+    echo -e "${RED}  URL: ${URL}${NC}"
+    echo -e "${RED}  This platform may not be supported in this release${NC}"
+    rm "/tmp/${BINARY_NAME}"
     exit 1
 fi
 
