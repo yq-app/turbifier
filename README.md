@@ -124,6 +124,29 @@ turbifier start          # Verify all emails
 turbifier start 100      # Verify first 100 emails only
 ```
 
+### Email Extraction
+
+Extract Turbify emails from text files based on MX records:
+
+```bash
+turbifier extract input.txt output.txt                  # Extract with defaults
+turbifier extract input.txt output.txt -c 100           # Use 100 concurrent workers
+turbifier extract input.txt output.txt --duplicate      # Allow duplicates
+turbifier extract input.txt output.txt -c 200 --ttl 5   # Custom batch size & 5-day TTL
+```
+
+**What it does:**
+- Extracts all emails from text (any format)
+- Validates domain MX records (Turbify servers only)
+- Real-time duplicate tracking (2-7 day TTL)
+- Concurrent processing (1-500 batch size)
+- Appends valid emails to output file in real-time
+
+**Options:**
+- `-c, --concurrency` or `-b, --batch`: Batch size (default: 50, max: 500)
+- `-d, --duplicate`: Allow duplicates (disable duplicate tracking)
+- `--ttl`: Cache duration in days (default: 2, max: 7)
+
 ### Authentication
 
 ```bash
@@ -160,9 +183,28 @@ turbifier clear -c               # Clear current project
 turbifier clear -p <name>        # Clear specific project
 ```
 
+### Updates
+
+Keep your installation up to date:
+
+```bash
+turbifier check-update           # Check for new version
+turbifier check-update -f        # Force check (bypass cache)
+turbifier upgrade                # Upgrade to latest version
+turbifier upgrade -f             # Force reinstall/downgrade
+```
+
+**Notes:**
+- Update checks are cached for 24 hours
+- Upgrade requires elevated permissions (sudo on Linux/macOS)
+- Shows release notes when update available
+- Automatic platform detection
+
 ---
 
 ## Understanding Progress
+
+### Verification Progress
 
 During verification, you'll see real-time progress:
 
@@ -183,6 +225,30 @@ Progress: 45 / 100 (45.0%)
 - Yellow = Processing
 - Green = Success
 - Red = Failed
+
+### Extraction Progress
+
+During email extraction, real-time batch progress:
+
+```
+═══════════════════════════════════════════════════
+Progress:
+  [████████████████████████░░░░░░░░░░░░░░] 65.3%  653 / 1000
+  Time:     00:45
+  Valid:    520
+  Invalid:  128
+  Errors:   5
+
+Performance:
+  Rate: 14.5 emails/sec
+═══════════════════════════════════════════════════
+```
+
+**Metrics:**
+- **Processed**: Emails checked in real-time
+- **Valid**: Turbify emails (MX verified)
+- **Invalid**: Non-Turbify emails
+- **Errors**: DNS lookup failures
 
 ### Final Results
 
